@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Axios from 'axios';
 import { Icon, Col, Card, Row } from 'antd';
 import ImageSlider from '../../utils/ImageSlider';
+import CheckBox from './Sections/CheckBox';
+import RadioBox from './Sections/RadioBox';
 import { continents, price } from './Sections/Datas';
 import SearchFeature from './Sections/SearchFeature';
 
@@ -47,7 +49,21 @@ function LandingPage() {
             })
     }
 
-    
+    const onLoadMore = () => {
+        let skip = Skip + Limit;
+
+        const variables = {
+            skip: skip,
+            limit: Limit,
+            loadMore: true,
+            filters: Filters,
+            searchTerm: SearchTerms
+        }
+        getProducts(variables)
+        setSkip(skip)
+    }
+
+
     const renderCards = Products.map((product, index) => {
 
         return <Col lg={6} md={8} xs={24}>
@@ -176,6 +192,11 @@ function LandingPage() {
             }
             <br /><br />
 
+            {PostSize >= Limit &&
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <button onClick={onLoadMore}>더 보기</button>
+                </div>
+            }
 
 
         </div>
