@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import {
     getCartItems,
-    removeCartItem
+    removeCartItem,
+    onSuccessBuy
 } from '../../../_actions/user_actions';
 import UserCardBlock from './Sections/UserCardBlock';
 import { Result, Empty } from 'antd';
