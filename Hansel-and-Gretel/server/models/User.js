@@ -40,6 +40,10 @@ const userSchema = mongoose.Schema({
     },
     tokenExp: {
         type: Number
+    },
+    favorite: {
+        type: String,
+        maxlength: 50
     }
 })
 
@@ -47,7 +51,7 @@ userSchema.pre('save', function (next) {
     var user = this;
 
     if (user.isModified('password')) {
-        console.log('password changed')
+        console.log('password changed') //회원가입할 때 이게 왜 나오지
         bcrypt.genSalt(saltRounds, function (err, salt) {
             if (err) return next(err);
 

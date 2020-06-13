@@ -49,7 +49,7 @@ function UploadProductPage(props) {
 
         if (!TitleValue || !DescriptionValue || !PriceValue ||
             !ContinentValue || !Images) {
-            return alert('fill all the fields first!')
+            return alert('빈칸을 채워주세요!')
         }
 
         const variables = {
@@ -64,10 +64,10 @@ function UploadProductPage(props) {
         Axios.post('/api/product/uploadProduct', variables)
             .then(response => {
                 if (response.data.success) {
-                    alert('Product Successfully Uploaded')
+                    alert('상품이 성공적으로 등록되었습니다.')
                     props.history.push('/')
                 } else {
-                    alert('Failed to upload Product')
+                    alert('상품 등록에 실패하였습니다.')
                 }
             })
 
