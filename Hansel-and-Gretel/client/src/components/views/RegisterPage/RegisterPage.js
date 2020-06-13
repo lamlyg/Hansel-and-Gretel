@@ -227,6 +227,31 @@ function RegisterPage(props) {
               </Form.Item> */}
                       
 
+              <Form.Item required label="Favorite">
+                <Input
+                  id="favorite"
+                  placeholder="스낵류/캔디류/초콜릿/음료류/견과류 중에 입력해주세요."
+                  type="text"
+                  value={values.favorite}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.favorite && touched.favorite ? 'text-input error' : 'text-input'
+                  }
+                />
+                {errors.favorite && touched.favorite && (
+                  <div className="input-feedback">{errors.favorite}</div>
+                )}
+              </Form.Item>
+
+              {/* <Form.Item required label="Favorite">
+                <select onChange={onFavoritesSelectChange} value={FavoritesValue} >
+                    {Favorites.map(item => (
+                        <option key={item.key} value={item.key}>{item.value} </option>
+                    ))} 
+                </select>
+              </Form.Item> */}
+              
               <Form.Item {...tailFormItemLayout}>
                 <Button onClick={handleSubmit} type="primary" disabled={isSubmitting}>
                   등록
