@@ -105,7 +105,7 @@ export class UploadProductPage extends Component {
                     value={this.state.description}
                 />
                 <br /><br />
-                <label>가격(원)</label>
+                <label>가격($)</label>
                 <Input
                     type="number"
                     onChange={this.handleChangePrice}
