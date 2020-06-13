@@ -4,7 +4,6 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { registerUser } from "../../../_actions/user_actions";
 import { useDispatch } from "react-redux";
-
 import {
   Form,
   Input,
@@ -34,8 +33,20 @@ const tailFormItemLayout = {
   },
 };
 
+// const Favorites = [
+//   { key: 1, value: "스낵류" },
+//   { key: 2, value: "캔디류" },
+//   { key: 3, value: "초콜릿" },
+//   { key: 4, value: "음료류" },
+//   { key: 5, value: "견과류" }
+// ]
+
 function RegisterPage(props) {
   const dispatch = useDispatch();
+  // const [FavoritesValue, setFavoritesValue] = useState() //이게 안 바뀜
+  // const onFavoritesSelectChange = (event) => {
+  //   setFavoritesValue(event.currentTarget.value)
+  // }
   return (
 
     <Formik
@@ -189,6 +200,32 @@ function RegisterPage(props) {
                   <div className="input-feedback">{errors.confirmPassword}</div>
                 )}
               </Form.Item>
+                
+              <Form.Item required label="Favorite">
+                <Input
+                  id="favorite"
+                  placeholder="스낵류/캔디류/초콜릿/음료류/견과류 중에 입력해주세요."
+                  type="text"
+                  value={values.favorite}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.favorite && touched.favorite ? 'text-input error' : 'text-input'
+                  }
+                />
+                {errors.favorite && touched.favorite && (
+                  <div className="input-feedback">{errors.favorite}</div>
+                )}
+              </Form.Item>
+              
+              {/* <Form.Item required label="Favorite">
+                <select onChange={onFavoritesSelectChange} value={FavoritesValue} >
+                    {Favorites.map(item => (
+                        <option key={item.key} value={item.key}>{item.value} </option>
+                    ))} 
+                </select>
+              </Form.Item> */}
+                      
 
               <Form.Item required label="Favorite">
                 <Input

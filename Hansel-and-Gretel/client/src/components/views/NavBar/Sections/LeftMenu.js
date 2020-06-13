@@ -6,16 +6,16 @@ const MenuItemGroup = Menu.ItemGroup;
 function LeftMenu(props) {
   return (
     <Menu mode={props.mode}>
-    <Menu.Item key="mail">
+    <Menu.Item key="home">
       <a href="/">홈</a>
     </Menu.Item>
-    <Menu.Item key="mail">
+    <Menu.Item key="rec">
       <a href="/">추천상품</a>
     </Menu.Item>
-    <Menu.Item key="mail">
+    <Menu.Item key="best">
       <a href="/">BEST상품</a>
     </Menu.Item>
-    <Menu.Item key="mail">
+    <Menu.Item key="hit">
       <a href="/">HIT상품</a>
     </Menu.Item>
   </Menu>
