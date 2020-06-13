@@ -7,18 +7,17 @@ function LeftMenu(props) {
   return (
     <Menu mode={props.mode}>
     <Menu.Item key="mail">
-      <a href="/">YUMMY</a>
+      <a href="/">홈</a>
     </Menu.Item>
-    <SubMenu title={<span>CATEGORY</span>}>
-      <MenuItemGroup title="Item 1">
-        <Menu.Item key="setting:1">스낵류</Menu.Item>
-        <Menu.Item key="setting:2">캔디류</Menu.Item>
-      </MenuItemGroup>
-      <MenuItemGroup title="Item 2">
-        <Menu.Item key="setting:3">Option 3</Menu.Item>
-        <Menu.Item key="setting:4">Option 4</Menu.Item>
-      </MenuItemGroup>
-    </SubMenu>
+    <Menu.Item key="mail">
+      <a href="/">추천상품</a>
+    </Menu.Item>
+    <Menu.Item key="mail">
+      <a href="/">BEST상품</a>
+    </Menu.Item>
+    <Menu.Item key="mail">
+      <a href="/">HIT상품</a>
+    </Menu.Item>
   </Menu>
   )
 }

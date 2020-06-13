@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react'
 import moment from "moment";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -44,7 +44,8 @@ function RegisterPage(props) {
         lastName: '',
         name: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        favorite:'' //이게 맞는지
       }}
       validationSchema={Yup.object().shape({
         name: Yup.string()
@@ -59,7 +60,9 @@ function RegisterPage(props) {
           .required('Password is required'),
         confirmPassword: Yup.string()
           .oneOf([Yup.ref('password'), null], 'Passwords must match')
-          .required('Confirm Password is required')
+          .required('Confirm Password is required'),
+          favorite: Yup.string()
+          .required('Your Favorite Continent is required (write 스낵류/캔디류/초콜릿/음료류/견과류')
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -69,7 +72,8 @@ function RegisterPage(props) {
             password: values.password,
             name: values.name,
             lastname: values.lastname,
-            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`
+            image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
+            favorite: values.favorite//이게 맞는지
           };
 
           dispatch(registerUser(dataToSubmit)).then(response => {
@@ -97,14 +101,14 @@ function RegisterPage(props) {
           handleReset,
         } = props;
         return (
-          <div className="app">
-            <h2>회원가입</h2>
-            <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
+          <div  className="app">
+            <h2  > 회원가입</h2>
+            <Form justify="center"  align="left" style={{ minWidth: '600px', padding: '1rem' }} {...formItemLayout} onSubmit={handleSubmit} >
 
               <Form.Item required label="Name">
                 <Input
                   id="name"
-                  placeholder="Enter your name"
+                  placeholder="이름을 입력해주세요."
                   type="text"
                   value={values.name}
                   onChange={handleChange}
@@ -121,7 +125,7 @@ function RegisterPage(props) {
               <Form.Item required label="Last Name">
                 <Input
                   id="lastName"
-                  placeholder="Enter your Last Name"
+                  placeholder="성을 입력해주세요."
                   type="text"
                   value={values.lastName}
                   onChange={handleChange}
@@ -138,7 +142,7 @@ function RegisterPage(props) {
               <Form.Item required label="Email" hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
                 <Input
                   id="email"
-                  placeholder="Enter your Email"
+                  placeholder="이메일을 입력해주세요."
                   type="email"
                   value={values.email}
                   onChange={handleChange}
@@ -155,7 +159,7 @@ function RegisterPage(props) {
               <Form.Item required label="Password" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
                 <Input
                   id="password"
-                  placeholder="Enter your password"
+                  placeholder="비밀번호를 입력해주세요."
                   type="password"
                   value={values.password}
                   onChange={handleChange}
@@ -172,7 +176,7 @@ function RegisterPage(props) {
               <Form.Item required label="Confirm" hasFeedback>
                 <Input
                   id="confirmPassword"
-                  placeholder="Enter your confirmPassword"
+                  placeholder="비밀번호 확인을 위해 입력해주세요."
                   type="password"
                   value={values.confirmPassword}
                   onChange={handleChange}
@@ -186,6 +190,31 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
+              <Form.Item required label="Favorite">
+                <Input
+                  id="favorite"
+                  placeholder="스낵류/캔디류/초콜릿/음료류/견과류 중에 입력해주세요."
+                  type="text"
+                  value={values.favorite}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.favorite && touched.favorite ? 'text-input error' : 'text-input'
+                  }
+                />
+                {errors.favorite && touched.favorite && (
+                  <div className="input-feedback">{errors.favorite}</div>
+                )}
+              </Form.Item>
+
+              {/* <Form.Item required label="Favorite">
+                <select onChange={onFavoritesSelectChange} value={FavoritesValue} >
+                    {Favorites.map(item => (
+                        <option key={item.key} value={item.key}>{item.value} </option>
+                    ))} 
+                </select>
+              </Form.Item> */}
+              
               <Form.Item {...tailFormItemLayout}>
                 <Button onClick={handleSubmit} type="primary" disabled={isSubmitting}>
                   등록
