@@ -101,7 +101,7 @@ function UploadProductPage(props) {
                 />
                 <br />
                 <br />
-                <label>가격(원)</label>
+                <label>가격($)</label>
                 <Input
                     onChange={onPriceChange}
                     value={PriceValue}

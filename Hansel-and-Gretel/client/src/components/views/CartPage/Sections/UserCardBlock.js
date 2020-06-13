@@ -19,7 +19,7 @@ function UserCardBlock(props) {
                     src={renderCartImage(product.images)} />
                 </td> 
                 <td>{product.quantity} 개</td>
-                <td>{product.price}원</td>
+                <td>{product.price}$</td>
                 <td><button 
                 onClick={()=> props.removeItem(product._id)}
                 >삭제 </button> </td>
