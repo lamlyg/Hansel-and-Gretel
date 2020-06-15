@@ -10,7 +10,7 @@ function LeftMenu(props) {
       <a href="/">홈</a>
     </Menu.Item>
     <Menu.Item key="rec">
-      <a href="/">추천상품</a>
+      <a href="/recommend">추천상품</a>
     </Menu.Item>
     <Menu.Item key="best">
       <a href="/">BEST상품</a>
