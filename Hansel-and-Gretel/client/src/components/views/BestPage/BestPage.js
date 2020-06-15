@@ -5,12 +5,12 @@ import ImageSlider from '../../utils/ImageSlider';
 
 const { Meta } = Card;
 
-function RecommendPage(props) {
+function BestPage(props) {
 
     const [Products, setProducts] = useState([])
     const [Skip, setSkip] = useState(0)
-    const [Limit, setLimit] = useState(13)
-    const [PostSize, setPostSize] = useState(0)
+    const [Limit, setLimit] = useState(8)
+    const [PostSize, setPostSize] = useState()
     const [SearchTerms, setSearchTerms] = useState("")
 
     const [Filters, setFilters] = useState({
@@ -63,26 +63,25 @@ function RecommendPage(props) {
 
     const renderCards = Products.map((product, index) => {
         
-        if(product.continents==2){
-            return <Col lg={6} md={8} xs={24}>
-                <Card
-                    hoverable={true}
-                    cover={<a href={`/product/${product._id}`} > <ImageSlider images={product.images} /></a>}
-                >
-                    <Meta
-                        title={product.title}
-                        description={`${product.price}$`}
-                    />
-                </Card>
-            </Col>
-        }
+        return <Col lg={6} md={8} xs={24}>
+            <Card
+                hoverable={true}
+                cover={<a href={`/product/${product._id}`} > <ImageSlider images={product.images} /></a>}
+            >
+                <Meta
+                    title={product.title}
+                    description={`${product.price}$`}
+                />
+            </Card>
+        </Col>
+        
     })
 
 
     return (
         <div style={{ width: '75%', margin: '3rem auto' }}>
             <div style={{ textAlign: 'center' }}>
-                <h2>  추천 상품 <Icon type="rocket" />  </h2>
+                <h2>  베스트 상품 <Icon type="rocket" />  </h2>
             </div>
 
 
@@ -107,4 +106,4 @@ function RecommendPage(props) {
     )
 }
 
-export default RecommendPage
+export default BestPage
