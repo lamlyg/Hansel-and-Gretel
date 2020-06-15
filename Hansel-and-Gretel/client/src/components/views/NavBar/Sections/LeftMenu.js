@@ -15,8 +15,8 @@ function LeftMenu(props) {
     <Menu.Item key="best">
       <a href="/best">BEST상품</a>
     </Menu.Item>
-    <Menu.Item key="hit">
-      <a href="/">HIT상품</a>
+    <Menu.Item key="new">
+      <a href="/new">신상품</a>
     </Menu.Item>
   </Menu>
   )
