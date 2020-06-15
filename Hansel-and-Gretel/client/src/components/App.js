@@ -13,6 +13,7 @@ import CartPage from './views/CartPage/CartPage';
 import HistoryPage from './views/HistoryPage/HistoryPage';
 import RecommendPage from './views/RecommendPage/RecommendPage';
 import BestPage from './views/BestPage/BestPage';
+import NewPage from './views/NewPage/NewPage';
 
 function App() {
   return (
@@ -27,8 +28,9 @@ function App() {
           <Route exact path="/product/:productId" component={Auth(DetailProductPage, null)} />
           <Route exact path="/user/cart" component={Auth(CartPage, true)} />
           <Route exact path="/history" component={Auth(HistoryPage, true)} />
-          <Route exact path="/recommend" component={Auth(RecommendPage,true)}/>
-          <Route exact path="/best" component={Auth(BestPage,true)}/>
+          <Route exact path="/recommend" component={Auth(RecommendPage,null)}/>
+          <Route exact path="/best" component={Auth(BestPage,null)}/>
+          <Route exact path="/new" component={Auth(NewPage,null)}/>
           
         </Switch>
       </div>
