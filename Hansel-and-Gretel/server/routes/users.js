@@ -79,6 +79,7 @@ router.get('/addToCart', auth, (req, res) => {
 
     User.findOne({ _id: req.user._id }, (err, userInfo) => {
         let duplicate = false;
+        var today = new Date();
 
         console.log(userInfo)
 
@@ -107,7 +108,7 @@ router.get('/addToCart', auth, (req, res) => {
                         cart: {
                             id: req.query.productId,
                             quantity: 1,
-                            date: Date.now()
+                            date: today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
                         }
                     }
                 },
@@ -177,11 +178,12 @@ router.get('/userCartInfo', auth, (req, res) => {
 router.post('/successBuy', auth, (req, res) => {
     let history = [];
     let transactionData = {};
+    var today = new Date();
 
     //1.Put brief Payment Information inside User Collection 
     req.body.cartDetail.forEach((item) => {
         history.push({
-            dateOfPurchase: Date.now(),
+            dateOfPurchase: today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate(),
             name: item.title,
             id: item._id,
             price: item.price,
