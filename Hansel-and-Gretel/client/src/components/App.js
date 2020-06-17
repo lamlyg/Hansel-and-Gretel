@@ -35,7 +35,7 @@ function App() {
           <Route exact path="/new" component={Auth(NewPage,null)}/>
           <Route exact path="/userinfo" component={Auth(UserInfoPage,null)}/>
           <Route exact path="/admininfo" component={Auth(AdminInfoPage,null)}/>
-
+          
         </Switch>
       </div>
       <Footer />
