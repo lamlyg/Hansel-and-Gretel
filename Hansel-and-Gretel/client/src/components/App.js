@@ -14,6 +14,8 @@ import HistoryPage from './views/HistoryPage/HistoryPage';
 import RecommendPage from './views/RecommendPage/RecommendPage';
 import BestPage from './views/BestPage/BestPage';
 import NewPage from './views/NewPage/NewPage';
+import UserInfoPage from './views/UserInfoPage/UserInfoPage';
+import AdminInfoPage from './views/AdminInfoPage/AdminInfoPage';
 
 function App() {
   return (
@@ -31,7 +33,9 @@ function App() {
           <Route exact path="/recommend" component={Auth(RecommendPage,null)}/>
           <Route exact path="/best" component={Auth(BestPage,null)}/>
           <Route exact path="/new" component={Auth(NewPage,null)}/>
-          
+          <Route exact path="/userinfo" component={Auth(UserInfoPage,null)}/>
+          <Route exact path="/admininfo" component={Auth(AdminInfoPage,null)}/>
+
         </Switch>
       </div>
       <Footer />
