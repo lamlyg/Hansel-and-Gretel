@@ -3,6 +3,8 @@ import { Button, Descriptions } from 'antd';
 
 function ProductInfo(props) {
 
+
+    
     const [Product, setProduct] = useState({})
 
     useEffect(() => {
@@ -19,9 +21,9 @@ function ProductInfo(props) {
     return (
         <div>
             <Descriptions title="Product Info">
+                <Descriptions.Item label="Name"> {Product.title}</Descriptions.Item>
                 <Descriptions.Item label="Price"> {Product.price}</Descriptions.Item>
                 <Descriptions.Item label="Sold">{Product.sold}</Descriptions.Item>
-                <Descriptions.Item label="View"> {Product.views}</Descriptions.Item>
                 <Descriptions.Item label="Description"> {Product.description}</Descriptions.Item>
             </Descriptions>
 
