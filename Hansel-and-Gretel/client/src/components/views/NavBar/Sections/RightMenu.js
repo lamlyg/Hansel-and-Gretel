@@ -34,7 +34,7 @@ function RightMenu(props) {
     )
   } 
   else {
-    if(!user.isAdmin){
+    if(!user.isAdmin){ //구매자일 떄
       return (
         <Menu mode={props.mode}>
   
@@ -51,6 +51,10 @@ function RightMenu(props) {
             </Badge>
           </Menu.Item>
   
+
+          <Menu.Item key="userinfo">
+            <a href="/userinfo">내 정보</a>
+          </Menu.Item>  
   
           <Menu.Item key="logout">
             <a onClick={logoutHandler}>로그아웃</a>
@@ -58,24 +62,20 @@ function RightMenu(props) {
         </Menu>
       )
     }
-    else {
+    else { //관리자일 때
       return (
         <Menu mode={props.mode}>
   
           <Menu.Item key="history">
-            <a href="/history">주문내역</a>
+            <a href="/history">판매내역및현황</a>
           </Menu.Item>
   
           <Menu.Item key="upload">
             <a href="/product/upload">상품등록</a>
           </Menu.Item>
-  
-          <Menu.Item key="cart" style={{ paddingBottom: 3 }}>
-            <Badge count={user.userData && user.userData.cart.length}>
-              <a href="/user/cart" style={{ marginRight: -22 , color:'#667777'}}>
-                <Icon type="shopping-cart" style={{ fontSize: 30, marginBottom: 3 }} />
-              </a>
-            </Badge>
+
+          <Menu.Item key="admininfo">
+            <a href="/admininfo">회원관리및조회</a>
           </Menu.Item>
   
   
