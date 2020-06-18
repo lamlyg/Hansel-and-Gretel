@@ -9,11 +9,12 @@ import { useDispatch } from 'react-redux';
 import Comments from './Sections/Comments'
 import LikeDislikes from './Sections/LikeDislikes';
 
+import { useSelector } from 'react-redux';
 
 function DetailProductPage(props) {
 
     const dispatch = useDispatch();
-    
+    const user = useSelector(state => state.user)
     const productId = props.match.params.productId
     const [Product, setProduct] = useState([])
     const [CommentLists, setCommentLists] = useState([])
@@ -41,13 +42,17 @@ function DetailProductPage(props) {
     }, [])
 
     const addToCartHandler = (productId) => {
+        if (user.userData && !user.userData.isAuth) {
+            return alert('로그인 후 이용해주세요.');
+        } 
+
         dispatch(addToCart(productId))
     }
 
     const updateComment = (newComment) => {
         setCommentLists(CommentLists.concat(newComment))
     }
-
+    
     return (
         <div className="postPage" style={{ width: '100%', padding: '3rem 4rem' }}>
 

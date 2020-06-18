@@ -56,7 +56,8 @@ function RegisterPage(props) {
         name: '',
         password: '',
         confirmPassword: '',
-        favorite:'' //이게 맞는지
+        favorite:'',
+        address:''
       }}
       validationSchema={Yup.object().shape({
         name: Yup.string()
@@ -72,9 +73,12 @@ function RegisterPage(props) {
         confirmPassword: Yup.string()
           .oneOf([Yup.ref('password'), null], 'Passwords must match')
           .required('Confirm Password is required'),
-          favorite: Yup.string()
-          .required('Your Favorite Continent is required (write 스낵류/캔디류/초콜릿/음료류/견과류')
-      })}
+        favorite: Yup.string()
+          .min(3, '정확히 입력해주세요.')
+          .required('필수 항목입니다.') ,  
+        address: Yup.string()
+        .required('필수 항목입니다.')
+        })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
 
@@ -84,7 +88,8 @@ function RegisterPage(props) {
             name: values.name,
             lastname: values.lastname,
             image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
-            favorite: values.favorite//이게 맞는지
+            favorite: values.favorite,
+            address: values.address
           };
 
           dispatch(registerUser(dataToSubmit)).then(response => {
@@ -164,6 +169,23 @@ function RegisterPage(props) {
                 />
                 {errors.email && touched.email && (
                   <div className="input-feedback">{errors.email}</div>
+                )}
+              </Form.Item>
+
+              <Form.Item required label="Address">
+                <Input
+                  id="address"
+                  placeholder="주소를 입력해주세요."
+                  type="text"
+                  value={values.address}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.address && touched.address ? 'text-input error' : 'text-input'
+                  }
+                />
+                {errors.address && touched.address && (
+                  <div className="input-feedback">{errors.address}</div>
                 )}
               </Form.Item>
 

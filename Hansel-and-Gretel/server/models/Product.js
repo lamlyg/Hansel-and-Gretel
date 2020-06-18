@@ -33,6 +33,10 @@ const productSchema = mongoose.Schema({
     views: {
         type: Number,
         default: 0
+    },
+    ship: {
+        type:String,
+        default: "배송중"
     }
 }, { timestamps: true })
 

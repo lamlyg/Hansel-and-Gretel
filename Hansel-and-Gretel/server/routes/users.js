@@ -23,7 +23,9 @@ router.get("/auth", auth, (req, res) => {
         role: req.user.role,
         image: req.user.image,
         cart: req.user.cart,
-        history: req.user.history
+        history: req.user.history,
+        favorite: req.user.favorite,  
+        address: req.user.address 
     });
 });
 
@@ -188,7 +190,8 @@ router.post('/successBuy', auth, (req, res) => {
             id: item._id,
             price: item.price,
             quantity: item.quantity,
-            paymentId: req.body.paymentData.paymentID
+            paymentId: req.body.paymentData.paymentID,
+            ship: item.ship,
         })
     })
 

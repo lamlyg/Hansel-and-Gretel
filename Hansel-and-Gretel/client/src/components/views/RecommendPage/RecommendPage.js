@@ -3,9 +3,20 @@ import Axios from 'axios';
 import { Icon, Col, Card, Row } from 'antd';
 import ImageSlider from '../../utils/ImageSlider';
 
+
+import { useSelector } from "react-redux";
+
+
+
 const { Meta } = Card;
 
 function RecommendPage(props) {
+
+
+    const user = useSelector(state => state.user)
+
+
+
 
     const [Products, setProducts] = useState([])
     const [Skip, setSkip] = useState(0)
@@ -62,8 +73,14 @@ function RecommendPage(props) {
 
 
     const renderCards = Products.map((product, index) => {
-        
-        if(product.continents==2){
+        let num=0;
+        if(props.user.userData.favorite=="스낵류") {num=1;}
+        else if(props.user.userData.favorite=="캔디류") {num=2;}
+        else if(props.user.userData.favorite=="초콜릿") {num=3;}
+        else if(props.user.userData.favorite=="음료류") {num=4;}
+        else if(props.user.userData.favorite=="견과류") {num=5;}
+
+        if(product.continents=== num){         
             return <Col lg={6} md={8} xs={24}>
                 <Card
                     hoverable={true}

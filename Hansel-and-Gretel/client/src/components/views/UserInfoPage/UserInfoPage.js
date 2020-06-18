@@ -15,15 +15,17 @@ function UserInfoPage(props) {
                         <tr>
                             <th>이름</th>
                             <th>이메일</th>
+                            <th>주소</th>
                             <th>관심 상품</th>
                         </tr>
                     </thead>
 
                     <tbody>
                                 <tr>
-                                    <td>{user.name}</td>
-                                    <td>{user.email}</td>
-                                    <td>{"캔디류"}</td>
+                                    <td>{user.userData.name}</td>
+                                    <td>{user.userData.email}</td>
+                                    <td>{user.userData.address}</td>
+                                    <td>{user.userData.favorite}</td>
                                 </tr>
                             
  
@@ -32,6 +34,6 @@ function UserInfoPage(props) {
             </div>
         )
     
-}
+}////////////618
 
 export default UserInfoPage
