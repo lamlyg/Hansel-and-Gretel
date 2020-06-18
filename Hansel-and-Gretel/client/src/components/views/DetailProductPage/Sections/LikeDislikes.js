@@ -66,46 +66,48 @@ function LikeDislikes(props) {
     const onLike = () => {
        
         if (user.userData && !user.userData.isAuth) {
-            return alert('Please Log in first');
+            return alert('로그인 후 이용해주세요.');
         }
 
-        if (LikeAction === null) {
+        if(user.isAdmin==0){
+            if (LikeAction === null) {
 
-            Axios.post('/api/like/upLike', variable)
-                .then(response => {
-                    if (response.data.success) {
+                Axios.post('/api/like/upLike', variable)
+                    .then(response => {
+                        if (response.data.success) {
 
-                        setLikes(Likes + 1)
-                        setLikeAction('liked')
+                            setLikes(Likes + 1)
+                            setLikeAction('liked')
 
-                        //If dislike button is already clicked
+                            //If dislike button is already clicked
 
-                        if (DislikeAction !== null) {
-                            setDislikeAction(null)
-                            setDislikes(Dislikes - 1)
+                            if (DislikeAction !== null) {
+                                setDislikeAction(null)
+                                setDislikes(Dislikes - 1)
+                            }
+
+
+                        } else {
+                            alert('Failed to increase the like')
                         }
+                    })
 
 
-                    } else {
-                        alert('Failed to increase the like')
-                    }
-                })
+            } else {
 
+                Axios.post('/api/like/unLike', variable)
+                    .then(response => {
+                        if (response.data.success) {
 
-        } else {
+                            setLikes(Likes - 1)
+                            setLikeAction(null)
 
-            Axios.post('/api/like/unLike', variable)
-                .then(response => {
-                    if (response.data.success) {
+                        } else {
+                            alert('Failed to decrease the like')
+                        }
+                    })
 
-                        setLikes(Likes - 1)
-                        setLikeAction(null)
-
-                    } else {
-                        alert('Failed to decrease the like')
-                    }
-                })
-
+            }
         }
 
     }
@@ -114,44 +116,46 @@ function LikeDislikes(props) {
     const onDisLike = () => {
 
         if (user.userData && !user.userData.isAuth) {
-            return alert('Please Log in first');
+            return alert('로그인 후 이용해주세요.');
         }
 
-        if (DislikeAction !== null) {
+        if(user.isAdmin==0){
+            if (DislikeAction !== null) {
 
-            Axios.post('/api/like/unDisLike', variable)
-                .then(response => {
-                    if (response.data.success) {
+                Axios.post('/api/like/unDisLike', variable)
+                    .then(response => {
+                        if (response.data.success) {
 
-                        setDislikes(Dislikes - 1)
-                        setDislikeAction(null)
+                            setDislikes(Dislikes - 1)
+                            setDislikeAction(null)
 
-                    } else {
-                        alert('Failed to decrease dislike')
-                    }
-                })
-
-        } else {
-
-            Axios.post('/api/like/upDisLike', variable)
-                .then(response => {
-                    if (response.data.success) {
-
-                        setDislikes(Dislikes + 1)
-                        setDislikeAction('disliked')
-
-                        //If dislike button is already clicked
-                        if(LikeAction !== null ) {
-                            setLikeAction(null)
-                            setLikes(Likes - 1)
+                        } else {
+                            alert('Failed to decrease dislike')
                         }
+                    })
 
-                    } else {
-                        alert('Failed to increase dislike')
-                    }
-                })
+            } else {
+
+                Axios.post('/api/like/upDisLike', variable)
+                    .then(response => {
+                        if (response.data.success) {
+
+                            setDislikes(Dislikes + 1)
+                            setDislikeAction('disliked')
+
+                            //If dislike button is already clicked
+                            if(LikeAction !== null ) {
+                                setLikeAction(null)
+                                setLikes(Likes - 1)
+                            }
+
+                        } else {
+                            alert('Failed to increase dislike')
+                        }
+                    })
 
 
+            }
         }
 
 

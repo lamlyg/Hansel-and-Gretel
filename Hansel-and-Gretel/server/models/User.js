@@ -48,6 +48,9 @@ const userSchema = mongoose.Schema({
     favorite: {
         type: String,
         maxlength: 50
+    },
+    address: {
+        type: String
     }
 })
 

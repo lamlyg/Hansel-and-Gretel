@@ -67,7 +67,7 @@ function RightMenu(props) {
         <Menu mode={props.mode}>
   
           <Menu.Item key="history">
-            <a href="/history">판매내역및현황</a>
+            <a href="/history">판매현황</a>
           </Menu.Item>
   
           <Menu.Item key="upload">
@@ -75,7 +75,7 @@ function RightMenu(props) {
           </Menu.Item>
 
           <Menu.Item key="admininfo">
-            <a href="/admininfo">회원관리및조회</a>
+            <a href="/admininfo">회원조회</a>
           </Menu.Item>
   
   
