@@ -74,10 +74,10 @@ function RegisterPage(props) {
           .oneOf([Yup.ref('password'), null], 'Passwords must match')
           .required('Confirm Password is required'),
         favorite: Yup.string()
-          .min(3, '정확히 입력해주세요.')
-          .required('필수 항목입니다.') ,  
+          .min(3, 'Please write correctly')
+          .required('favorite is required') ,  
         address: Yup.string()
-        .required('필수 항목입니다.')
+        .required('address is required')
         })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
