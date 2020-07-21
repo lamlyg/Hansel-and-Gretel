@@ -12,9 +12,10 @@
 - Windows 10
 ### Client
 - JavaScript
-- React JS
-- Node.js
-- mongoDB
+- ReactJS
+- NodeJS
+- Express
+- MongoDB
 
 ## API
 - Paypal (https://developer.paypal.com/docs/api/overview/)
