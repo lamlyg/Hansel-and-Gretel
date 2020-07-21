@@ -64,8 +64,8 @@ npm install --save react-paypal-express-checkout
 
 
 ## Application Architecture
-- [Page design by function]()
-- [REST API design]()
+- [Page design by function](https://github.com/lamlyg/Hansel-and-Gretel/wiki/Page-design-by-function)
+- [REST API design](https://github.com/lamlyg/Hansel-and-Gretel/wiki/REST-API-design)
 
 ## Database Diagram
 ![image](https://user-images.githubusercontent.com/33417495/88052200-dbb6a580-cb94-11ea-88ad-3f76439a4a13.png)
